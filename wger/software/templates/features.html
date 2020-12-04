@@ -1,0 +1,780 @@
+{% extends "base_features.html" %}
+{% load i18n static wger_extras %}
+
+{#           #}
+{# Opengraph #}
+{#           #}
+{% block opengraph %}
+    {{ block.super }}
+    <meta property="og:title" content="{% trans 'Features' %} - wger">
+
+    {% with username=owner_user.username %}
+        <meta property="og:description" content="{% blocktrans %}wger Workout Manager is a free, open source web application that manages your exercises and workouts. {% endblocktrans %}">
+    {% endwith %}
+{% endblock %}
+
+
+{#         #}
+{# Content #}
+{#         #}
+{% block content %}
+<!-- Google Fonts https://fonts.google.com/ -->
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+<!-- Animate.css https://cdnjs.com/libraries/animate.css/
+    https://daneden.github.io/animate.css/ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<!-- Lightbox Image Gallery https://cdnjs.com/libraries/lightbox2  https://lokeshdhakar.com/projects/lightbox2/ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css">
+<!-- Owl Carousel https://cdnjs.com/libraries/OwlCarousel2
+    http://owlcarousel2.github.io/OwlCarousel2/ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-heading" ><h1 class="font-weight-bold os-animation" data-animation="animate__animated animate__bounceInUp" data-delay=".6s"> GET <span class="text-inthefitzone" > In the fit zone </span></h1></div>
+                <div class="intro-lead-in"> <h3>Once you get in, you can't get out </h3> </div>
+        
+                {% if not user.is_authenticated or user.userprofile.is_temporary %}
+                    {% if allow_registration %}
+                        <a href="{% url 'core:user:registration' %}" class="btn btn-outline-light btn-lg rounded-0 os-animation animated animate__animated animate__bounceInUp" style="margin-top: 1em;">
+                            {% trans "Register" %}
+                        </a>
+                    {% endif %}
+
+                    <a href="{% url 'core:user:login' %}" class="btn btn-outline-light btn-lg rounded-0 os-animation animated animate__animated animate__bounceInUp" style="margin-top: 1em;">
+                        {% trans "Login" %}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+
+
+<!-- Start Features Section -->
+<div id="features" class="offset">
+
+    <!--Start Theme Heading -->
+
+    <div class="row bg-light text-center py-4 justify-content-center">
+        <div class="col-11 col-md-10 col-lg-9 os-animation" data-animation="animate__animated animate__fadeInUp">
+            <h1> Bienvenido a tu viaje fitness</h1>
+            <p class="lead"> Nuestra misión : Que te conviertas en tu propio superhéroe. </p>
+            <a href="#contact" class="btn btn-secondary btn-sm">Request A Quote</a>
+            <a href="#portfolio" class="btn btn-nuno btn-sm">See Our Portfolio</a>
+        </div>
+    </div>
+
+    <!--End Theme Heading-->
+
+    <!--Start Jumbotron Theme Heading-->
+    <div class="jumbotron m-0 py-5" >
+        <div class="col-12 os-animation" data-animation="animate__animated animate__fadeInUp">
+            <h3 class="Heading" style="font-family: 'Bangers', cursive" > Features </h3>
+            <div class="heading-underline"></div>
+
+            <div class="container">
+                <div class="row text-center px-lg-4 px-xl-5" >
+                            <!--primer icono-->
+                    <div class="col-sm-6 col-md-4 os-animation" data-animation="animate__animated animate__fadeInLeft">
+                        <div class="feature px-2">
+                            <span class="fa-stack fa-2x">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-mobile-alt fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h3  style="font-size: large ;"> Comunicación 24/7 </h3>
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipi</p>
+                        </div>
+                    </div> <!--segundo icono-->
+                    <div class="col-sm-6 col-md-4 os-animation" data-animation="animate__animated animate__fadeInUp">
+                        <div class="feature px-2">
+                            <span class="fa-stack fa-2x">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-desktop fa-stack-1x fa-inverse "data-fa-transform="shrink-1" ></i>
+                            </span>
+                            <h3  style="font-size: large ;"> Aplicación web </h3>
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipi</p>
+                        </div>
+                    </div>  <!--tercer icono-->
+                    <div class="col-sm-6 col-md-4 os-animation" data-animation="animate__animated animate__fadeInRight">
+                        <div class="feature px-2">
+                            <span class="fa-stack fa-2x">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-play fa-stack-1x fa-inverse" data-fa-transform="shrink-3.5 right-1"></i>
+                            </span>
+                            <h3  style="font-size: large ;"> Seguimiento de resultados </h3>
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipi</p>
+                        </div>
+                    </div> <!--cuarto icono-->
+                    <div class="col-sm-6 col-md-4 os-animation" data-animation="animate__animated animate__fadeInLeft">
+                        <div class="feature px-2">
+                            <span class="fa-stack fa-2x">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-angle-double-down fa-stack-1x fa-inverse" ></i>
+                            </span>
+                            <h3  style="font-size: large ;"> Entrenamiento y rutina </h3>
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipi</p>
+                        </div>
+                    </div> <!--quinto icono-->
+                    <div class="col-sm-6 col-md-4 os-animation" data-animation="animate__animated animate__fadeInUp">
+                        <div class="feature px-2">
+                            <span class="fa-stack fa-2x">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-sliders-h fa-stack-1x fa-inverse" data-fa-transform="shrink-1"></i>
+                            </span>
+                            <h3  style="font-size: large ;"> Entrenamiento y rutina </h3>
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipi</p>
+                        </div>
+                    </div> <!--sexto icono-->
+                    <div class="col-sm-6 col-md-4 os-animation" data-animation="animate__animated animate__fadeInRight">
+                        <div class="feature px-2">
+                            <span class="fa-stack fa-2x">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-wpforms fa-stack-1x fa-inverse" data-fa-transform="shrink-1"></i>
+                            </span>
+                            <h3  style="font-size: large ;"> Contacto </h3>
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipi</p>
+                        </div>
+                    </div>
+
+
+
+
+                </div> 	<!--End Row-->
+            </div> <!--End Container -->
+        </div> <!--End Div class jumbotron Container -->
+
+
+    </div> <!--End Jumbotron Theme Heading-->
+
+    <!--Start Fixed BG IMG Dark -->
+    <div class="fixed">
+
+        <div class="row dark text-light text-center">
+        
+            <div class="col-12 os-animation" data-animation="animate__animated animate__fadeInUp">
+                <h3 class="heading" style="font-family: 'Bangers', cursive;"> Built With Care</h3>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="col-md-4 os-animation" data-animation="animate__animated animate__fadeInLeft">
+                <h3>Bajar de peso</h3>
+                <div class="feature py-2">
+                    <span class="fa-layers fa-3x">
+                        <i class="fas fa-weight"></i>
+                    </span>
+                </div>
+                <p class="lead">Built with the latest, HTML 5.</p>
+            </div>
+
+            <div class="col-md-4 os-animation" data-animation="animate__animated animate__fadeInUp">
+                <h3>Mantenimiento</h3>
+                <div class="feature py-2">
+                    <span class="fa-layers fa-3x">
+                        <i class="fas fa-heartbeat"></i>
+                    </span>
+                </div>
+                <p class="lead">Built with the latest, Bootstrap 4.</p>
+            </div>
+
+            <div class="col-md-4 os-animation" data-animation="animate__animated animate__fadeInRight">
+                <h3>Aumentar masa muscular</h3>
+                <div class="feature py-2">
+                    <span class="fa-layers fa-3x">
+                        <i class="fas fa-dumbbell"></i>
+                    </span>
+                </div>
+                <p class="lead">Built with the latest, CSS 3.</p>
+            </div>
+
+        </div> <!-- End Row Dark -->
+
+        <div class="fixed-wrap">
+            <div class="fixed-dark"></div>
+        </div>
+    </div>
+    <!-- End Fixed BG IMG Dark -->
+    <!--End Fixed BG IMG Dark -->
+
+
+</div>
+
+<!-- End of Features Section -->
+
+
+<!-- Start Portfolio Section -->
+<div id="portfolio" class="offset" style="background-color: black">
+
+    <div class="container-fluid px-0">
+        <div class="row justify-content-center py-5 bg-light" >
+
+            <div class="col-12 mt-5 os-animation" data-animation="animate__animated animate__fadeInUp">
+                <h3 class="Heading" style="font-family: 'Bangers', cursive;">Portfolio</h3>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 p-0 os-animation" data-animation="animate__animated animate__bounceInLeft" data-delay=".2s">
+                <div class="portfolio-item overflow-hidden">
+                    <a href="{% static 'core/img/portfolio/1.jpg' %}" data-lightbox="example-set" data-title="My Portfolio Image Description">
+                        <img src="{% static 'core/img/portfolio/1.jpg' %}" alt="" class="example-image w-100">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 p-0 os-animation" data-animation="animate__animated animate__bounceInLeft">
+                <div class="portfolio-item overflow-hidden">
+                    <a href="{% static 'core/img/portfolio/2.jpg' %}" data-lightbox="example-set" data-title="My Portfolio Image Description">
+                        <img src="{% static 'core/img/portfolio/2.jpg' %}" alt="" class="example-image w-100">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 p-0 os-animation" data-animation="animate__animated animate__bounceInRight">
+                <div class="portfolio-item overflow-hidden">
+                    <a href="{% static 'core/img/portfolio/3.jpg' %}" data-lightbox="example-set" data-title="My Portfolio Image Description">
+                        <img src="{% static 'core/img/portfolio/3.jpg' %}" alt="" class="example-image w-100">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 p-0 os-animation" data-animation="animate__animated animate__bounceInRight" data-delay=".2s">
+                <div class="portfolio-item overflow-hidden">
+                    <a href="{% static 'core/img/portfolio/4.jpg' %}" data-lightbox="example-set" data-title="My Portfolio Image Description">
+                        <img src="{% static 'core/img/portfolio/4.jpg' %}" alt="" class="example-image w-100">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 p-0 os-animation" data-animation="animate__animated animate__bounceInLeft" data-delay=".2s">
+                <div class="portfolio-item overflow-hidden">
+                    <a href="{% static 'core/img/portfolio/5.jpg' %}" data-lightbox="example-set" data-title="My Portfolio Image Description">
+                        <img src="{% static 'core/img/portfolio/5.jpg' %}" alt="" class="example-image w-100">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 p-0 os-animation" data-animation="animate__animated animate__bounceInLeft">
+                <div class="portfolio-item overflow-hidden">
+                    <a href="{% static 'core/img/portfolio/6.jpg' %}" data-lightbox="example-set" data-title="My Portfolio Image Description">
+                        <img src="{% static 'core/img/portfolio/6.jpg' %}" alt="" class="example-image w-100">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 p-0 os-animation" data-animation="animate__animated animate__bounceInRight">
+                <div class="portfolio-item overflow-hidden">
+                    <a href="{% static 'core/img/portfolio/7.jpg' %}" data-lightbox="example-set" data-title="My Portfolio Image Description">
+                        <img src="{% static 'core/img/portfolio/7.jpg' %}" alt="" class="example-image w-100">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-3 p-0 os-animation" data-animation="animate__animated animate__bounceInRight" data-delay=".2s">
+                <div class="portfolio-item overflow-hidden">
+                    <a href="{% static 'core/img/portfolio/8.jpg' %}" data-lightbox="example-set" data-title="My Portfolio Image Description">
+                        <img src="{% static 'core/img/portfolio/8.jpg' %}" alt="" class="example-image w-100">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-10 col-lg-9 col-xl-8 text-center pt-5 os-animation" data-animation="animate__animated animate__fadeInUp">
+                <p class="lead">Get in contact with us to see more of our great portfolio design work in addition to web development projects such as websites, apps and more!</p>
+                <a href="#contact" class="btn btn-secondary btn-sm">Get In Touch</a>
+            </div> 
+
+        </div> <!-- End Row -->
+    </div> <!-- End Container -->
+
+</div>
+<!-- End of Portfolio Section -->
+
+
+<!-- Start Pricing Section -->
+<div id="pricing" class="offset" style="background-color: black ">
+
+    <div class="jumbotron mb-0" style="background-color: black" >
+        <div class="container py-2">
+
+            <div class="os-animation">
+                <h3 class="Heading" style="font-family: 'Bangers', cursive; color: white " data-animation="animate__animated animate__fadeInUp" > Pricing </h3>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="row justify-content-center text-center px-lg-4 px-xl-5 ">
+                <!-- First princig column -->
+                <div class="col-md-6 col-lg-4 os-animation" data-animation="animate__animated animate__fadeInLeft">
+                    <div class="pricing-column">
+                        <h3 class="border-bottom py-2 mx-3"> Basic </h3>
+                        <p class="lead py-2"> The Basic Plan, the best plan to det started off</p>
+                        <h4 class="pb-2"> Domain names</h4>
+                        <h4 class="pb-2"> Email Adress: 1</h4>
+                        <h4> Hard Drive: 50GB</h4>
+                        <h1 class="py-3"> $49 </h1>
+                        <a href="#contact" class="btn btn-secondary btn-sm"> Buy Now</a>
+                    </div>
+
+                </div>
+                <!-- Second princig column -->
+                <div class="col-md-6 col-lg-4 os-animation" data-animation="animate__animated animate__fadeInUp">
+                    <div class="pricing-column">
+                        <div class="ribbon">Best Value </div>
+                        <h3 class="border-bottom py-2 mx-3 text-inthefitzone font-weight-bold" > Pro </h3>
+                        <p class="lead py-2"> The Basic Plan, the best plan to det started off</p>
+                        <h4 class="pb-2"> Domain names</h4>
+                        <h4 class="pb-2"> Email Adress: 1</h4>
+                        <h4> Hard Drive: 50GB</h4>
+                        <h1 class="py-3"> $49 </h1>
+                        <a href="#contact" class="btn btn-secondary btn-sm"> Buy Now</a>
+                    </div>
+
+                </div>
+                <!-- Third princig column -->
+                <div class="col-md-6 col-lg-4 os-animation" data-animation="animate__animated animate__fadeInRight">
+                    <div class="pricing-column">
+                        <h3 class="border-bottom py-2 mx-3"> Premium  </h3>
+                        <p class="lead py-2"> The Basic Plan, the best plan to det started off</p>
+                        <h4 class="pb-2"> Domain names</h4>
+                        <h4 class="pb-2"> Email Adress: 1</h4>
+                        <h4> Hard Drive: 50GB</h4>
+                        <h1 class="py-3"> $49 </h1>
+                        <a href="#contact" class="btn btn-secondary btn-sm"> Buy Now</a>
+                    </div>
+
+                </div>
+            </div> <!-- End of row -->
+
+
+        </div><!-- End of container -->
+    </div> <!-- End of jumbotron -->
+
+</div>
+
+<!-- End of Pricing Section -->
+
+
+<!-- Start Team Section -->
+<div id="team" class="offset">
+
+    <!-- Start Fixed BG IMG Light -->
+    <div class="fixed">
+
+        <div class="row light">
+
+            <div class="col-12 os-animation" data-animation="animate__animated animate__fadeInUp">
+                <h3 class="Heading" style="font-family: 'Bangers', cursive;">Meet The Team</h3>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="container">
+
+                
+                <div class="os-animation" data-animation="animate__animated animate__fadeInUp">
+                    <div id="team-carousel" class="owl-carousel owl-theme">
+
+                        <div class="card">
+                            <img src="{% static 'core/img/team/team1.jpg' %}" alt="" class="card-img-top rounded-0">
+                            <div class="card-body">
+                                <h4 class="font-weight-bold">John Lee</h4>
+                                <h5 class="text-inthefitzone">CEO</h5>
+                                <p class="border-top border-bottom py-3 my-3">John is an entrepreneur with almost 20 years of experience.</p>
+                                <ul class="social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Card -->
+
+                        <div class="card">
+                            <img src="{% static 'core/img/team/team2.jpg' %}" alt="" class="card-img-top rounded-0">
+                            <div class="card-body">
+                                <h4 class="font-weight-bold">Jessica Miller</h4>
+                                <h5 class="text-inthefitzone">President</h5>
+                                <p class="border-top border-bottom py-3 my-3">Jessica has over 10 years of experience in a technology role.</p>
+                                <ul class="social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Card -->
+
+                        <div class="card">
+                            <img src="{% static 'core/img/team/team3.jpg' %}" alt="" class="card-img-top rounded-0">
+                            <div class="card-body">
+                                <h4 class="font-weight-bold">Charles Davis</h4>
+                                <h5 class="text-inthefitzone">Vice President</h5>
+                                <p class="border-top border-bottom py-3 my-3">Charles went to business school and worked his way up the ladder.</p>
+                                <ul class="social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Card -->
+
+                        <div class="card">
+                            <img src="{% static 'core/img/team/team4.jpg' %}" alt="" class="card-img-top rounded-0">
+                            <div class="card-body">
+                                <h4 class="font-weight-bold">Cindy Wilson</h4>
+                                <h5 class="text-inthefitzone">CFO</h5>
+                                <p class="border-top border-bottom py-3 my-3">Cindy has an established financial operations background.</p>
+                                <ul class="social">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                </ul>
+                            </div>
+                        </div> <!-- End Card -->
+
+                    </div> <!-- End Team Carousel -->
+                </div> <!-- End Animation -->
+            </div><!-- End Container -->
+
+        </div> <!-- End Row -->
+
+        <div class="fixed-wrap">
+            <div class="fixed-light"></div>
+        </div>
+    </div>
+    <!-- End Fixed BG IMG Light -->
+
+</div>
+<!-- End Team Section -->
+
+
+<!-- Start Skills Section -->
+<div id="skills" class="offset">
+
+    <div class="jumbotron m-0 py-5">
+        <div class="container">
+
+            <div class="col-12 os-animation" data-animation="animate__animated animate__fadeInUp">
+                <h3 class="Heading" style="font-family: 'Bangers', cursive">Our Skills</h3>
+                <div class="heading-underline"></div>
+            </div>
+
+            <div class="row justify-content-center text-center os-animation" data-animation="animate__animated animate__fadeInUp">
+                <div class="col-md-9 col-lg-12 col-xl-11">
+                    <div class="row">
+
+                        <div class="col-md-6 col-lg-3">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-clock fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h1 class="text-nuno font-weight-bold py-1"><span class="counter">999 </span></h1>
+                            <h4 class="text-uppercase font-weight-bold" style=" color: brown;">Class Minutes</h4>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-square fa-stack-2x"></i>
+                                <i class="fab fa-codepen fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h1 class="text-nuno font-weight-bold py-1"><span class="counter">199</span></h1>
+                            <h4 class="text-uppercase font-weight-bold" style=" color: brown;">Web Dev Files</h4>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-square fa-stack-2x"></i>
+                                <i class="fas fa-users fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h1 class="text-nuno font-weight-bold py-1"><span class="counter">365</span></h1>
+                            <h4 class="text-uppercase font-weight-bold" style=" color: brown "> 24/7 Support</h4>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <span class="fa-stack fa-3x">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-cloud-download-alt fa-stack-1x fa-inverse"></i>
+                            </span>
+                            <h1 class="text-nuno font-weight-bold py-1"><span class="counter">101</span></h1>
+                            <h4 class="text-uppercase font-weight-bold" style=" color: brown">Resources</h4>
+                        </div>
+
+                    </div> <!-- End Row -->
+                </div> <!-- End Column -->
+            </div> <!-- End Row Justify Content -->
+
+            <div class="col-12 text-center os-animation" data-animation="animate__animated animate__fadeInUp">
+                <p class="lead">Want to learn more about our design and development skills?</p>
+                <a href="#contact" class="btn btn-nuno btn-sm">Contact Us</a>
+            </div>
+
+        </div> <!-- End Container -->
+    </div> <!-- End Jumbotron -->
+
+</div>
+<!-- End of Skills Section -->
+
+
+<!-- Start Clients Section -->
+<div id="clients" class="offset">
+
+    <div class="row py-5 bg-light">
+
+        <div class="col-12 os-animation" data-animation="animate__animated animate__fadeInUp">
+            <h3 class="Heading" style="font-family: 'Bangers', cursive">Our Clients</h3>
+            <div class="heading-underline"></div>
+        </div>
+
+        <div class="col-12 px-xl-5 os-animation" data-animation="animate__animated animate__fadeInUp">
+            <div id="clients-carousel" class="owl-carousel owl-theme">
+
+                <div class="row clients px-3 px-md-4">
+                    <div class="col-lg-4 my-auto">
+                        <img src="{% static 'core/img/clients/client1.jpg' %}" alt="">
+                    </div>
+                    <div class="col-lg-8">
+                        <blockquote class="text-justify">
+                            <i class="fas fa-quote-left"></i>
+                            I see Nuno support as more of a partner to my company than a resource. I can pick up the phone and talk to anyone at any time and the way that they interact with us as a business makes it really simple.
+                            <hr class="clients-hr">
+                            <cite>&#8212; Eric, Small Business Owner</cite>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <div class="row clients px-3 px-md-4">
+                    <div class="col-lg-4 my-auto">
+                        <img src="{% static 'core/img/clients/client2.jpg' %}" alt="">
+                    </div>
+                    <div class="col-lg-8">
+                        <blockquote class="text-justify">
+                            <i class="fas fa-quote-left"></i>
+                            The great thing about Nuno is it's not just a design, it's a responsive Bootstrap theme with animation. Nuno's layout is seamless the smooth parallax scrolling and a pop-up portfolio section for my images.
+                            <hr class="clients-hr">
+                            <cite>&#8212; Rachel, Professional Photographer</cite>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <div class="row clients px-3 px-md-4">
+                    <div class="col-lg-4 my-auto">
+                        <img src="{% static 'core/img/clients/client3.jpg' %}" alt="">
+                    </div>
+                    <div class="col-lg-8">
+                        <blockquote class="text-justify">
+                            <i class="fas fa-quote-left"></i>
+                            This theme is fantastic!  It has all of the great website elements found throughout professional templates.  I've learned a lot through developing and designing it while adding my own touches to the design.
+                            <hr class="clients-hr">
+                            <cite>&#8212; Ricky, Aspiring Developer</cite>
+                        </blockquote>
+                    </div>
+                </div>
+
+            </div> <!-- End Carousel -->
+        </div> <!-- End Column -->
+
+    </div> <!-- End Row -->
+
+</div>
+<!-- End of Clients Section -->
+
+
+
+
+
+
+
+
+
+
+    <!-- Services Section -->
+    <section id="services" class="bg-darkest-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-light">{% trans "Your advantages" %}</h2>
+                    <h3 class="section-subheading text-muted">
+                        {% blocktrans trimmed %}
+                            wger Workout Manager is a free, open source web application that manages
+                            your exercises, workouts and nutrition. It started as a pet project of
+                            mine to replace my growing collection of different spreadsheets, but it
+                            has become something other people could also find useful.
+                        {% endblocktrans %}
+                    </h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="{% fa_class 'circle' %} fa-stack-2x text-primary"></i>
+                        <i class="{% fa_class 'user' %} fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading text-light">{% trans "Workouts" %}</h4>
+                    <p class="text-muted">
+                        {% blocktrans trimmed %}
+                            You can create and manage flexible workout routines for any goals you
+                            have. Select exactly which exercises you'll do and how many repetitions,
+                            time or distance you want to do them. You can also combine different
+                            workouts into a schedule.
+                        {% endblocktrans %}
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="{% fa_class 'circle' %} fa-stack-2x text-primary"></i>
+                        <i class="{% fa_class 'utensils' %} fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading text-light">{% trans "Nutrition" %}</h4>
+                    <p class="text-muted">
+                        {% blocktrans trimmed %}
+                            Create your personal diet plan by creating as many meals with as many
+                            different ingredients as you need. The application will calculate the
+                            nutritional values (total energy, protein, carbohydrates, and so on)
+                            about the whole plan as well as the indivual meals.
+                        {% endblocktrans %}
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="{% fa_class 'circle' %} fa-stack-2x text-primary"></i>
+                        <i class="{% fa_class 'chart-line' %} fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading text-light">{% trans 'Diary' %}</h4>
+                    <p class="text-muted">
+                        {% blocktrans trimmed %}
+                            Enter the weights and repetitions you did for each exercise to generate
+                            diagrams that let you see at a glance how well you are doing. The raw
+                            numbers are of course still accessible.
+                        {% endblocktrans %}
+                        {% trans "You can also enter notes and a general impression (great, neutral, etc.)" %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{% trans "Features" %}</h2>
+                    <h3 class="section-subheading text-muted">{% trans "Among many others" %}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-fluid rounded-circle" src="{% static 'images/weight-chart.png' %}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{% trans "Weight tracker" %}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">
+                                        {% blocktrans trimmed %}
+                                            Keep track of your progress with the body weight chart. This makes
+                                            it easy to see if you are reaching your goals or need to adjust
+                                            something.
+                                        {% endblocktrans %}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-fluid rounded-circle" src="{% static 'images/calendar.png' %}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{% trans 'Calendar' %}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">
+                                        {% blocktrans trimmed %}
+                                            Get an overview of how and when you trained as well as how you
+                                            personally felt you performed. Access all your individual diary
+                                            entries with one click.
+                                        {% endblocktrans %}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline">
+                            <div class="timeline-image">
+                                <img class="img-fluid rounded-circle" src="{% static 'images/muscle-overview.png' %}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{% trans 'Exercise database' %}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">
+                                        {% blocktrans trimmed %}
+                                            The exercise database contains more than hundred exercises from
+                                            which you can choose when creating a workout. You can view them by
+                                            category and equipment used or muscles trained.
+                                        {% endblocktrans %}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-fluid rounded-circle" src="{% static 'images/gym-management.png' %}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{% trans 'Gym management' %}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">
+                                        {% blocktrans trimmed %}
+                                            Use the application for your gym to manage its members, their
+                                            workouts and attendance. You can manage the members' contracts,
+                                            keep notes and upload any files you might need.
+                                        {% endblocktrans %}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline">
+                            <div class="timeline-image">
+                                <img class="img-fluid rounded-circle" src="{% static 'images/rest-api.png' %}" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{% trans "REST API" %}</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">
+                                        {% blocktrans trimmed %}
+                                            wger provides a REST API with full read and write access to all
+                                            data so you can integrate your own application and tools.
+                                        {% endblocktrans %}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline">
+                            <div class="timeline-image">
+                                <h4>{% blocktrans trimmed %}100% Free
+                                    <br>and
+                                    <br>Open Source{% endblocktrans %}
+                                </h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

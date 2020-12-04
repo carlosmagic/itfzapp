@@ -1,0 +1,48 @@
+<!-- welness itfz -->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Wellness</h5>
+        <div class="card-text">
+            <p>
+               Your current wellness is?
+            </p>
+            <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                {{ form.as_p }}
+                <div class="row">
+                    <div class="col-md-12">
+                        {{wellnessentry.wellness_date}}
+                    </div>
+                    <div class="col-md-12">
+                        {{wellnessentry.wellnes_energy}}
+                    </div>
+                    <div class="col-md-12">
+                        {{wellnessentry.wellnes_sleep}}
+                    </div>
+                    <div class="col-md-12">
+                        {{wellnessentry.wellnes_motivation}}
+                    </div>
+                    <div class="col-md-12">
+                        {{wellnessentry.wellnes_stress}}
+                    </div>
+                    <div class="col-md-12">
+                        {{wellnessentry.wellnes_hungry}}
+                    </div>
+                    <div class="col-md-12">
+                        {{wellnessentry.wellnes_steps}}
+                    </div>
+                    <div class="col-md-12">
+                        {{wellnessentry.wellnes_bath}}
+                    </div>
+                    <div class="col-md-12">
+                        {{wellnessentry.wellnes_fasting}}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" class="btn btn-primary btn-block mt-3" value="Add Wellness">
+                </div>
+            </form> 
+                
+        </div>
+    </div>
+    
+</div>
